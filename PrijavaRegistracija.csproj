@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68F995AF-789D-40F4-82E2-061AFF829561}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PrijavaRegistracija</RootNamespace>
+    <AssemblyName>PrijavaRegistracija</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Artikl.cs" />
+    <Compile Include="CustomControls\Jelovnik.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Jelovnik.Designer.cs">
+      <DependentUpon>Jelovnik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\MojaPonuda.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MojaPonuda.Designer.cs">
+      <DependentUpon>MojaPonuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\MojePoruke.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MojePoruke.Designer.cs">
+      <DependentUpon>MojePoruke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\MojeRecenzije.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MojeRecenzije.Designer.cs">
+      <DependentUpon>MojeRecenzije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\MojProfil.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MojProfil.Designer.cs">
+      <DependentUpon>MojProfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\MojProfilKorisnik.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MojProfilKorisnik.Designer.cs">
+      <DependentUpon>MojProfilKorisnik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Narudzba.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Narudzba.Designer.cs">
+      <DependentUpon>Narudzba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\NarudzbaPrikaz.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\NarudzbaPrikaz.Designer.cs">
+      <DependentUpon>NarudzbaPrikaz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Navigacija.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Navigacija.Designer.cs">
+      <DependentUpon>Navigacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Novosti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Novosti.Designer.cs">
+      <DependentUpon>Novosti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ONama.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ONama.Designer.cs">
+      <DependentUpon>ONama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PopisNarudzbi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PopisNarudzbi.Designer.cs">
+      <DependentUpon>PopisNarudzbi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PoslanaPoruka.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PoslanaPoruka.Designer.cs">
+      <DependentUpon>PoslanaPoruka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PrikazArtikla.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PrikazArtikla.Designer.cs">
+      <DependentUpon>PrikazArtikla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PrikazNarudzbe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PrikazNarudzbe.Designer.cs">
+      <DependentUpon>PrikazNarudzbe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PrikazObjekta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PrikazObjekta.Designer.cs">
+      <DependentUpon>PrikazObjekta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PrikazRecenzije.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PrikazRecenzije.Designer.cs">
+      <DependentUpon>PrikazRecenzije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\PrimljenaPoruka.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PrimljenaPoruka.Designer.cs">
+      <DependentUpon>PrimljenaPoruka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dbArtikl.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbKorisnickiRacun.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbNarudžba.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbObicniKorisnik.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbPonuda.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbPoruka.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbPretplata.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbRecenzija.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbRezervacija.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbStavkaNarudzbe.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbUgostiteljskiObjekt.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notifikacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notifikacija.Designer.cs">
+      <DependentUpon>Notifikacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NovaPonuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaPonuda.Designer.cs">
+      <DependentUpon>NovaPonuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NovaPoruka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaPoruka.Designer.cs">
+      <DependentUpon>NovaPoruka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoviArtikl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoviArtikl.Designer.cs">
+      <DependentUpon>NoviArtikl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecenzijaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecenzijaForma.Designer.cs">
+      <DependentUpon>RecenzijaForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StavkaArtikla.cs" />
+    <Compile Include="StavkaNarudzbe.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UgostiteljGlavna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UgostiteljGlavna.Designer.cs">
+      <DependentUpon>UgostiteljGlavna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BazaPodataka.cs" />
+    <Compile Include="EAT32Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EAT32Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EAT32Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EAT32Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EAT32Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EAT32Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PocetnaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PocetnaForma.Designer.cs">
+      <DependentUpon>PocetnaForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KorisnickiRacun.cs" />
+    <Compile Include="KorisnikGlavna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KorisnikGlavna.Designer.cs">
+      <DependentUpon>KorisnikGlavna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObicniKorisnik.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registracija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registracija.Designer.cs">
+      <DependentUpon>Registracija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UgostiteljskiObjekt.cs" />
+    <Compile Include="UgostiteljskiObjektProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UgostiteljskiObjektProfil.Designer.cs">
+      <DependentUpon>UgostiteljskiObjektProfil.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomControls\Jelovnik.resx">
+      <DependentUpon>Jelovnik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MojaPonuda.resx">
+      <DependentUpon>MojaPonuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MojePoruke.resx">
+      <DependentUpon>MojePoruke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MojeRecenzije.resx">
+      <DependentUpon>MojeRecenzije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MojProfil.resx">
+      <DependentUpon>MojProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MojProfilKorisnik.resx">
+      <DependentUpon>MojProfilKorisnik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\Narudzba.resx">
+      <DependentUpon>Narudzba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\NarudzbaPrikaz.resx">
+      <DependentUpon>NarudzbaPrikaz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\Navigacija.resx">
+      <DependentUpon>Navigacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\Novosti.resx">
+      <DependentUpon>Novosti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\ONama.resx">
+      <DependentUpon>ONama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PopisNarudzbi.resx">
+      <DependentUpon>PopisNarudzbi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PoslanaPoruka.resx">
+      <DependentUpon>PoslanaPoruka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PrikazArtikla.resx">
+      <DependentUpon>PrikazArtikla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PrikazNarudzbe.resx">
+      <DependentUpon>PrikazNarudzbe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PrikazObjekta.resx">
+      <DependentUpon>PrikazObjekta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PrikazRecenzije.resx">
+      <DependentUpon>PrikazRecenzije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PrimljenaPoruka.resx">
+      <DependentUpon>PrimljenaPoruka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifikacija.resx">
+      <DependentUpon>Notifikacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NovaPonuda.resx">
+      <DependentUpon>NovaPonuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NovaPoruka.resx">
+      <DependentUpon>NovaPoruka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoviArtikl.resx">
+      <DependentUpon>NoviArtikl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecenzijaForma.resx">
+      <DependentUpon>RecenzijaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UgostiteljGlavna.resx">
+      <DependentUpon>UgostiteljGlavna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PocetnaForma.resx">
+      <DependentUpon>PocetnaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KorisnikGlavna.resx">
+      <DependentUpon>KorisnikGlavna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Registracija.resx">
+      <DependentUpon>Registracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UgostiteljskiObjektProfil.resx">
+      <DependentUpon>UgostiteljskiObjektProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="EAT32Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EAT32Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EAT32Model.edmx.diagram">
+      <DependentUpon>EAT32Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EAT32Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EAT32Model.Context.cs</LastGenOutput>
+      <DependentUpon>EAT32Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="EAT32Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EAT32Model.edmx</DependentUpon>
+      <LastGenOutput>EAT32Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\food.png" />
+    <Content Include="Resources\icons8-about-32.png" />
+    <Content Include="Resources\icons8-about-60.png" />
+    <Content Include="Resources\icons8-ask-question-32%281%29.png" />
+    <None Include="Resources\icons8-ask-question-32%281%291.png" />
+    <Content Include="Resources\icons8-ask-question-32.png" />
+    <None Include="Resources\icons8-ask-question-321.png" />
+    <Content Include="Resources\icons8-cancel-32.png" />
+    <Content Include="Resources\icons8-chat-26.png" />
+    <Content Include="Resources\icons8-checked-60.png" />
+    <Content Include="Resources\icons8-christmas-star-24.png" />
+    <Content Include="Resources\icons8-christmas-star-32.png" />
+    <Content Include="Resources\rss-feed-symbol.png" />
+    <None Include="Resources\rss-feed-symbol1.png" />
+    <None Include="Resources\icons8-christmas-star-321.png" />
+    <Content Include="Resources\icons8-contacts-32.png" />
+    <None Include="Resources\icons8-expand-arrow-242.png" />
+    <Content Include="Resources\icons8-delete-32.png" />
+    <Content Include="Resources\icons8-forward-24.png" />
+    <Content Include="Resources\icons8-high-priority-60.png" />
+    <Content Include="Resources\icons8-marker-26.png" />
+    <Content Include="Resources\icons8-marker-50.png" />
+    <Content Include="Resources\icons8-multiply-32.png" />
+    <Content Include="Resources\icons8-news-26.png" />
+    <Content Include="Resources\icons8-plus-32.png" />
+    <Content Include="Resources\icons8-plus-math-26.png" />
+    <Content Include="Resources\icons8-purchase-order-24.png" />
+    <Content Include="Resources\icons8-purchase-order-48.png" />
+    <Content Include="Resources\icons8-user-50.png" />
+    <Content Include="Resources\icons8-xing-96.png" />
+    <None Include="Resources\BEVdeBBccc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

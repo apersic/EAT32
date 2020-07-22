@@ -1,0 +1,921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EAT32DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dbArtikl">
+          <Key>
+            <PropertyRef Name="id_artikla" />
+          </Key>
+          <Property Name="id_artikla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ponuda_id" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cijena" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbKorisnickiRacun">
+          <Key>
+            <PropertyRef Name="id_korisnika" />
+          </Key>
+          <Property Name="id_korisnika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="80" />
+          <Property Name="broj_telefona" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbNarudžba">
+          <Key>
+            <PropertyRef Name="id_narudzbe" />
+          </Key>
+          <Property Name="id_narudzbe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ugostiteljski_obrt_id" Type="int" Nullable="false" />
+          <Property Name="korisnik_id" Type="int" Nullable="false" />
+          <Property Name="datum" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dbObicniKorisnik">
+          <Key>
+            <PropertyRef Name="id_obicnog_korisnika" />
+          </Key>
+          <Property Name="id_obicnog_korisnika" Type="int" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbPonuda">
+          <Key>
+            <PropertyRef Name="id_ponude" />
+          </Key>
+          <Property Name="id_ponude" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ugostiteljski_obrt_id" Type="int" Nullable="false" />
+          <Property Name="opis" Type="text" />
+        </EntityType>
+        <EntityType Name="dbPoruka">
+          <Key>
+            <PropertyRef Name="id_poruke" />
+          </Key>
+          <Property Name="id_poruke" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="posiljatelj_id" Type="int" Nullable="false" />
+          <Property Name="primatelj_id" Type="int" Nullable="false" />
+          <Property Name="naslov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tekst" Type="text" />
+        </EntityType>
+        <EntityType Name="dbPretplata">
+          <Key>
+            <PropertyRef Name="id_pretplate" />
+          </Key>
+          <Property Name="id_pretplate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnik_id" Type="int" />
+          <Property Name="ugostiteljski_obrt_id" Type="int" />
+        </EntityType>
+        <EntityType Name="dbRecenzija">
+          <Key>
+            <PropertyRef Name="id_recenzije" />
+          </Key>
+          <Property Name="narudzba_id" Type="int" Nullable="false" />
+          <Property Name="komentar" Type="text" />
+          <Property Name="ocjena" Type="int" />
+          <Property Name="id_recenzije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbRezervacija">
+          <Key>
+            <PropertyRef Name="id_rezervacije" />
+          </Key>
+          <Property Name="id_rezervacije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ugostiteljski_obrt_id" Type="int" Nullable="false" />
+          <Property Name="korisnik_id" Type="int" Nullable="false" />
+          <Property Name="broj_stolova" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbStavkaNarudzbe">
+          <Key>
+            <PropertyRef Name="id_stavke_narudzbe" />
+          </Key>
+          <Property Name="artikl_id" Type="int" Nullable="false" />
+          <Property Name="narudzba_id" Type="int" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+          <Property Name="popust" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="id_stavke_narudzbe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbUgostiteljskiObjekt">
+          <Key>
+            <PropertyRef Name="id_ugostiteljskog_obrta" />
+          </Key>
+          <Property Name="id_ugostiteljskog_obrta" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="radno_vrijeme_pocetak" Type="time" Precision="7" />
+          <Property Name="radno_vrijeme_kraj" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Artikl_Ponuda">
+          <End Role="dbPonuda" Type="Self.dbPonuda" Multiplicity="1" />
+          <End Role="dbArtikl" Type="Self.dbArtikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbPonuda">
+              <PropertyRef Name="id_ponude" />
+            </Principal>
+            <Dependent Role="dbArtikl">
+              <PropertyRef Name="ponuda_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbNarudžba_dbObicniKorisnik">
+          <End Role="dbObicniKorisnik" Type="Self.dbObicniKorisnik" Multiplicity="1" />
+          <End Role="dbNarudžba" Type="Self.dbNarudžba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Principal>
+            <Dependent Role="dbNarudžba">
+              <PropertyRef Name="korisnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbNarudžba_dbUgostiteljskiObjekt">
+          <End Role="dbUgostiteljskiObjekt" Type="Self.dbUgostiteljskiObjekt" Multiplicity="1" />
+          <End Role="dbNarudžba" Type="Self.dbNarudžba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbNarudžba">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbObicniKorisnik_dbKorisnickiRacun">
+          <End Role="dbKorisnickiRacun" Type="Self.dbKorisnickiRacun" Multiplicity="1" />
+          <End Role="dbObicniKorisnik" Type="Self.dbObicniKorisnik" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbPonuda_dbUgostiteljskiObjekt">
+          <End Role="dbUgostiteljskiObjekt" Type="Self.dbUgostiteljskiObjekt" Multiplicity="1" />
+          <End Role="dbPonuda" Type="Self.dbPonuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbPonuda">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbPretplata_dbObicniKorisnik">
+          <End Role="dbObicniKorisnik" Type="Self.dbObicniKorisnik" Multiplicity="0..1" />
+          <End Role="dbPretplata" Type="Self.dbPretplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Principal>
+            <Dependent Role="dbPretplata">
+              <PropertyRef Name="korisnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbPretplata_dbUgostiteljskiObjekt">
+          <End Role="dbUgostiteljskiObjekt" Type="Self.dbUgostiteljskiObjekt" Multiplicity="0..1" />
+          <End Role="dbPretplata" Type="Self.dbPretplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbPretplata">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbRecenzija_dbNarudžba1">
+          <End Role="dbNarudžba" Type="Self.dbNarudžba" Multiplicity="1" />
+          <End Role="dbRecenzija" Type="Self.dbRecenzija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbNarudžba">
+              <PropertyRef Name="id_narudzbe" />
+            </Principal>
+            <Dependent Role="dbRecenzija">
+              <PropertyRef Name="narudzba_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbRezervacija_dbObicniKorisnik">
+          <End Role="dbObicniKorisnik" Type="Self.dbObicniKorisnik" Multiplicity="1" />
+          <End Role="dbRezervacija" Type="Self.dbRezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Principal>
+            <Dependent Role="dbRezervacija">
+              <PropertyRef Name="korisnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbRezervacija_dbUgostiteljskiObjekt">
+          <End Role="dbUgostiteljskiObjekt" Type="Self.dbUgostiteljskiObjekt" Multiplicity="1" />
+          <End Role="dbRezervacija" Type="Self.dbRezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbRezervacija">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbStavkaNarudzbe_dbNarudžba">
+          <End Role="dbNarudžba" Type="Self.dbNarudžba" Multiplicity="1" />
+          <End Role="dbStavkaNarudzbe" Type="Self.dbStavkaNarudzbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbNarudžba">
+              <PropertyRef Name="id_narudzbe" />
+            </Principal>
+            <Dependent Role="dbStavkaNarudzbe">
+              <PropertyRef Name="narudzba_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbUgostiteljskiObjekt_dbKorisnickiRacun">
+          <End Role="dbKorisnickiRacun" Type="Self.dbKorisnickiRacun" Multiplicity="1" />
+          <End Role="dbUgostiteljskiObjekt" Type="Self.dbUgostiteljskiObjekt" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poruka_Korisnik">
+          <End Role="dbKorisnickiRacun" Type="Self.dbKorisnickiRacun" Multiplicity="1" />
+          <End Role="dbPoruka" Type="Self.dbPoruka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbPoruka">
+              <PropertyRef Name="posiljatelj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poruka_Korisnik1">
+          <End Role="dbKorisnickiRacun" Type="Self.dbKorisnickiRacun" Multiplicity="1" />
+          <End Role="dbPoruka" Type="Self.dbPoruka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbPoruka">
+              <PropertyRef Name="primatelj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka narudzbe_Artikl">
+          <End Role="dbArtikl" Type="Self.dbArtikl" Multiplicity="1" />
+          <End Role="dbStavkaNarudzbe" Type="Self.dbStavkaNarudzbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbArtikl">
+              <PropertyRef Name="id_artikla" />
+            </Principal>
+            <Dependent Role="dbStavkaNarudzbe">
+              <PropertyRef Name="artikl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EAT32DBModelStoreContainer">
+          <EntitySet Name="dbArtikl" EntityType="Self.dbArtikl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbKorisnickiRacun" EntityType="Self.dbKorisnickiRacun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbNarudžba" EntityType="Self.dbNarudžba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbObicniKorisnik" EntityType="Self.dbObicniKorisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbPonuda" EntityType="Self.dbPonuda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbPoruka" EntityType="Self.dbPoruka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbPretplata" EntityType="Self.dbPretplata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbRecenzija" EntityType="Self.dbRecenzija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbRezervacija" EntityType="Self.dbRezervacija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbStavkaNarudzbe" EntityType="Self.dbStavkaNarudzbe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbUgostiteljskiObjekt" EntityType="Self.dbUgostiteljskiObjekt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Artikl_Ponuda" Association="Self.FK_Artikl_Ponuda">
+            <End Role="dbPonuda" EntitySet="dbPonuda" />
+            <End Role="dbArtikl" EntitySet="dbArtikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbNarudžba_dbObicniKorisnik" Association="Self.FK_dbNarudžba_dbObicniKorisnik">
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbNarudžba_dbUgostiteljskiObjekt" Association="Self.FK_dbNarudžba_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbObicniKorisnik_dbKorisnickiRacun" Association="Self.FK_dbObicniKorisnik_dbKorisnickiRacun">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbPonuda_dbUgostiteljskiObjekt" Association="Self.FK_dbPonuda_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbPonuda" EntitySet="dbPonuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbPretplata_dbObicniKorisnik" Association="Self.FK_dbPretplata_dbObicniKorisnik">
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+            <End Role="dbPretplata" EntitySet="dbPretplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbPretplata_dbUgostiteljskiObjekt" Association="Self.FK_dbPretplata_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbPretplata" EntitySet="dbPretplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbRecenzija_dbNarudžba1" Association="Self.FK_dbRecenzija_dbNarudžba1">
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+            <End Role="dbRecenzija" EntitySet="dbRecenzija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbRezervacija_dbObicniKorisnik" Association="Self.FK_dbRezervacija_dbObicniKorisnik">
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+            <End Role="dbRezervacija" EntitySet="dbRezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbRezervacija_dbUgostiteljskiObjekt" Association="Self.FK_dbRezervacija_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbRezervacija" EntitySet="dbRezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbStavkaNarudzbe_dbNarudžba" Association="Self.FK_dbStavkaNarudzbe_dbNarudžba">
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+            <End Role="dbStavkaNarudzbe" EntitySet="dbStavkaNarudzbe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbUgostiteljskiObjekt_dbKorisnickiRacun" Association="Self.FK_dbUgostiteljskiObjekt_dbKorisnickiRacun">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poruka_Korisnik" Association="Self.FK_Poruka_Korisnik">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbPoruka" EntitySet="dbPoruka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poruka_Korisnik1" Association="Self.FK_Poruka_Korisnik1">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbPoruka" EntitySet="dbPoruka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka narudzbe_Artikl" Association="Self.FK_Stavka narudzbe_Artikl">
+            <End Role="dbArtikl" EntitySet="dbArtikl" />
+            <End Role="dbStavkaNarudzbe" EntitySet="dbStavkaNarudzbe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EAT32DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="eat32Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dbArtikl" EntityType="EAT32DBModel.dbArtikl" />
+          <EntitySet Name="dbKorisnickiRacun" EntityType="EAT32DBModel.dbKorisnickiRacun" />
+          <EntitySet Name="dbNarudžba" EntityType="EAT32DBModel.dbNarudžba" />
+          <EntitySet Name="dbObicniKorisnik" EntityType="EAT32DBModel.dbObicniKorisnik" />
+          <EntitySet Name="dbPonuda" EntityType="EAT32DBModel.dbPonuda" />
+          <EntitySet Name="dbPoruka" EntityType="EAT32DBModel.dbPoruka" />
+          <EntitySet Name="dbRezervacija" EntityType="EAT32DBModel.dbRezervacija" />
+          <EntitySet Name="dbUgostiteljskiObjekt" EntityType="EAT32DBModel.dbUgostiteljskiObjekt" />
+          <EntitySet Name="sysdiagrams" EntityType="EAT32DBModel.sysdiagrams" />
+          <EntitySet Name="dbRecenzija" EntityType="EAT32DBModel.dbRecenzija" />
+          <EntitySet Name="dbStavkaNarudzbe" EntityType="EAT32DBModel.dbStavkaNarudzbe" />
+          <AssociationSet Name="FK_Artikl_Ponuda" Association="EAT32DBModel.FK_Artikl_Ponuda">
+            <End Role="dbPonuda" EntitySet="dbPonuda" />
+            <End Role="dbArtikl" EntitySet="dbArtikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_narudzbe_Artikl" Association="EAT32DBModel.FK_Stavka_narudzbe_Artikl">
+            <End Role="dbArtikl" EntitySet="dbArtikl" />
+            <End Role="dbStavkaNarudzbe" EntitySet="dbStavkaNarudzbe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbObicniKorisnik_dbKorisnickiRacun" Association="EAT32DBModel.FK_dbObicniKorisnik_dbKorisnickiRacun">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbUgostiteljskiObjekt_dbKorisnickiRacun" Association="EAT32DBModel.FK_dbUgostiteljskiObjekt_dbKorisnickiRacun">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poruka_Korisnik" Association="EAT32DBModel.FK_Poruka_Korisnik">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbPoruka" EntitySet="dbPoruka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poruka_Korisnik1" Association="EAT32DBModel.FK_Poruka_Korisnik1">
+            <End Role="dbKorisnickiRacun" EntitySet="dbKorisnickiRacun" />
+            <End Role="dbPoruka" EntitySet="dbPoruka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbNarudžba_dbObicniKorisnik" Association="EAT32DBModel.FK_dbNarudžba_dbObicniKorisnik">
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbNarudžba_dbUgostiteljskiObjekt" Association="EAT32DBModel.FK_dbNarudžba_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbRezervacija_dbObicniKorisnik" Association="EAT32DBModel.FK_dbRezervacija_dbObicniKorisnik">
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+            <End Role="dbRezervacija" EntitySet="dbRezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbRezervacija_dbUgostiteljskiObjekt" Association="EAT32DBModel.FK_dbRezervacija_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbRezervacija" EntitySet="dbRezervacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbRecenzija_dbNarudžba1" Association="EAT32DBModel.FK_dbRecenzija_dbNarudžba1">
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+            <End Role="dbRecenzija" EntitySet="dbRecenzija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbStavkaNarudzbe_dbNarudžba" Association="EAT32DBModel.FK_dbStavkaNarudzbe_dbNarudžba">
+            <End Role="dbNarudžba" EntitySet="dbNarudžba" />
+            <End Role="dbStavkaNarudzbe" EntitySet="dbStavkaNarudzbe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbPonuda_dbUgostiteljskiObjekt" Association="EAT32DBModel.FK_dbPonuda_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbPonuda" EntitySet="dbPonuda" />
+          </AssociationSet>
+          <EntitySet Name="dbPretplata" EntityType="EAT32DBModel.dbPretplata" />
+          <AssociationSet Name="FK_dbPretplata_dbObicniKorisnik" Association="EAT32DBModel.FK_dbPretplata_dbObicniKorisnik">
+            <End Role="dbObicniKorisnik" EntitySet="dbObicniKorisnik" />
+            <End Role="dbPretplata" EntitySet="dbPretplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbPretplata_dbUgostiteljskiObjekt" Association="EAT32DBModel.FK_dbPretplata_dbUgostiteljskiObjekt">
+            <End Role="dbUgostiteljskiObjekt" EntitySet="dbUgostiteljskiObjekt" />
+            <End Role="dbPretplata" EntitySet="dbPretplata" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="dbArtikl">
+          <Key>
+            <PropertyRef Name="id_artikla" />
+          </Key>
+          <Property Name="id_artikla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ponuda_id" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cijena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbPonuda" Relationship="EAT32DBModel.FK_Artikl_Ponuda" FromRole="dbArtikl" ToRole="dbPonuda" />
+          <NavigationProperty Name="dbStavkaNarudzbe" Relationship="EAT32DBModel.FK_Stavka_narudzbe_Artikl" FromRole="dbArtikl" ToRole="dbStavkaNarudzbe" />
+        </EntityType>
+        <EntityType Name="dbKorisnickiRacun">
+          <Key>
+            <PropertyRef Name="id_korisnika" />
+          </Key>
+          <Property Name="id_korisnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnicko_ime" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lozinka" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adresa" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="broj_telefona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbObicniKorisnik" Relationship="EAT32DBModel.FK_dbObicniKorisnik_dbKorisnickiRacun" FromRole="dbKorisnickiRacun" ToRole="dbObicniKorisnik" />
+          <NavigationProperty Name="dbUgostiteljskiObjekt" Relationship="EAT32DBModel.FK_dbUgostiteljskiObjekt_dbKorisnickiRacun" FromRole="dbKorisnickiRacun" ToRole="dbUgostiteljskiObjekt" />
+          <NavigationProperty Name="dbPoruka" Relationship="EAT32DBModel.FK_Poruka_Korisnik" FromRole="dbKorisnickiRacun" ToRole="dbPoruka" />
+          <NavigationProperty Name="dbPoruka1" Relationship="EAT32DBModel.FK_Poruka_Korisnik1" FromRole="dbKorisnickiRacun" ToRole="dbPoruka" />
+        </EntityType>
+        <EntityType Name="dbNarudžba">
+          <Key>
+            <PropertyRef Name="id_narudzbe" />
+          </Key>
+          <Property Name="id_narudzbe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ugostiteljski_obrt_id" Type="Int32" Nullable="false" />
+          <Property Name="korisnik_id" Type="Int32" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="dbObicniKorisnik" Relationship="EAT32DBModel.FK_dbNarudžba_dbObicniKorisnik" FromRole="dbNarudžba" ToRole="dbObicniKorisnik" />
+          <NavigationProperty Name="dbUgostiteljskiObjekt" Relationship="EAT32DBModel.FK_dbNarudžba_dbUgostiteljskiObjekt" FromRole="dbNarudžba" ToRole="dbUgostiteljskiObjekt" />
+          <NavigationProperty Name="dbRecenzija1" Relationship="EAT32DBModel.FK_dbRecenzija_dbNarudžba1" FromRole="dbNarudžba" ToRole="dbRecenzija" />
+          <NavigationProperty Name="dbStavkaNarudzbe" Relationship="EAT32DBModel.FK_dbStavkaNarudzbe_dbNarudžba" FromRole="dbNarudžba" ToRole="dbStavkaNarudzbe" />
+        </EntityType>
+        <EntityType Name="dbObicniKorisnik">
+          <Key>
+            <PropertyRef Name="id_obicnog_korisnika" />
+          </Key>
+          <Property Name="id_obicnog_korisnika" Type="Int32" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbKorisnickiRacun" Relationship="EAT32DBModel.FK_dbObicniKorisnik_dbKorisnickiRacun" FromRole="dbObicniKorisnik" ToRole="dbKorisnickiRacun" />
+          <NavigationProperty Name="dbNarudžba" Relationship="EAT32DBModel.FK_dbNarudžba_dbObicniKorisnik" FromRole="dbObicniKorisnik" ToRole="dbNarudžba" />
+          <NavigationProperty Name="dbRezervacija" Relationship="EAT32DBModel.FK_dbRezervacija_dbObicniKorisnik" FromRole="dbObicniKorisnik" ToRole="dbRezervacija" />
+          <NavigationProperty Name="dbPretplata" Relationship="EAT32DBModel.FK_dbPretplata_dbObicniKorisnik" FromRole="dbObicniKorisnik" ToRole="dbPretplata" />
+        </EntityType>
+        <EntityType Name="dbPonuda">
+          <Key>
+            <PropertyRef Name="id_ponude" />
+          </Key>
+          <Property Name="id_ponude" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ugostiteljski_obrt_id" Type="Int32" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbArtikl" Relationship="EAT32DBModel.FK_Artikl_Ponuda" FromRole="dbPonuda" ToRole="dbArtikl" />
+          <NavigationProperty Name="dbUgostiteljskiObjekt" Relationship="EAT32DBModel.FK_dbPonuda_dbUgostiteljskiObjekt" FromRole="dbPonuda" ToRole="dbUgostiteljskiObjekt" />
+        </EntityType>
+        <EntityType Name="dbPoruka">
+          <Key>
+            <PropertyRef Name="id_poruke" />
+          </Key>
+          <Property Name="id_poruke" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="posiljatelj_id" Type="Int32" Nullable="false" />
+          <Property Name="primatelj_id" Type="Int32" Nullable="false" />
+          <Property Name="naslov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbKorisnickiRacun" Relationship="EAT32DBModel.FK_Poruka_Korisnik" FromRole="dbPoruka" ToRole="dbKorisnickiRacun" />
+          <NavigationProperty Name="dbKorisnickiRacun1" Relationship="EAT32DBModel.FK_Poruka_Korisnik1" FromRole="dbPoruka" ToRole="dbKorisnickiRacun" />
+        </EntityType>
+        <EntityType Name="dbRezervacija">
+          <Key>
+            <PropertyRef Name="id_rezervacije" />
+          </Key>
+          <Property Name="id_rezervacije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ugostiteljski_obrt_id" Type="Int32" Nullable="false" />
+          <Property Name="korisnik_id" Type="Int32" Nullable="false" />
+          <Property Name="broj_stolova" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="dbObicniKorisnik" Relationship="EAT32DBModel.FK_dbRezervacija_dbObicniKorisnik" FromRole="dbRezervacija" ToRole="dbObicniKorisnik" />
+          <NavigationProperty Name="dbUgostiteljskiObjekt" Relationship="EAT32DBModel.FK_dbRezervacija_dbUgostiteljskiObjekt" FromRole="dbRezervacija" ToRole="dbUgostiteljskiObjekt" />
+        </EntityType>
+        <EntityType Name="dbUgostiteljskiObjekt">
+          <Key>
+            <PropertyRef Name="id_ugostiteljskog_obrta" />
+          </Key>
+          <Property Name="id_ugostiteljskog_obrta" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="radno_vrijeme_pocetak" Type="Time" Precision="7" />
+          <Property Name="radno_vrijeme_kraj" Type="Time" Precision="7" />
+          <NavigationProperty Name="dbKorisnickiRacun" Relationship="EAT32DBModel.FK_dbUgostiteljskiObjekt_dbKorisnickiRacun" FromRole="dbUgostiteljskiObjekt" ToRole="dbKorisnickiRacun" />
+          <NavigationProperty Name="dbNarudžba" Relationship="EAT32DBModel.FK_dbNarudžba_dbUgostiteljskiObjekt" FromRole="dbUgostiteljskiObjekt" ToRole="dbNarudžba" />
+          <NavigationProperty Name="dbRezervacija" Relationship="EAT32DBModel.FK_dbRezervacija_dbUgostiteljskiObjekt" FromRole="dbUgostiteljskiObjekt" ToRole="dbRezervacija" />
+          <NavigationProperty Name="dbPonuda" Relationship="EAT32DBModel.FK_dbPonuda_dbUgostiteljskiObjekt" FromRole="dbUgostiteljskiObjekt" ToRole="dbPonuda" />
+          <NavigationProperty Name="dbPretplata" Relationship="EAT32DBModel.FK_dbPretplata_dbUgostiteljskiObjekt" FromRole="dbUgostiteljskiObjekt" ToRole="dbPretplata" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="dbRecenzija">
+          <Key>
+            <PropertyRef Name="id_recenzije" />
+          </Key>
+          <Property Name="narudzba_id" Type="Int32" Nullable="false" />
+          <Property Name="komentar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ocjena" Type="Int32" />
+          <Property Name="id_recenzije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="dbNarudžba1" Relationship="EAT32DBModel.FK_dbRecenzija_dbNarudžba1" FromRole="dbRecenzija" ToRole="dbNarudžba" />
+        </EntityType>
+        <EntityType Name="dbStavkaNarudzbe">
+          <Key>
+            <PropertyRef Name="id_stavke_narudzbe" />
+          </Key>
+          <Property Name="artikl_id" Type="Int32" Nullable="false" />
+          <Property Name="narudzba_id" Type="Int32" Nullable="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <Property Name="popust" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="dbArtikl" Relationship="EAT32DBModel.FK_Stavka_narudzbe_Artikl" FromRole="dbStavkaNarudzbe" ToRole="dbArtikl" />
+          <Property Name="id_stavke_narudzbe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="dbNarudžba" Relationship="EAT32DBModel.FK_dbStavkaNarudzbe_dbNarudžba" FromRole="dbStavkaNarudzbe" ToRole="dbNarudžba" />
+        </EntityType>
+        <Association Name="FK_Artikl_Ponuda">
+          <End Type="EAT32DBModel.dbPonuda" Role="dbPonuda" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbArtikl" Role="dbArtikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbPonuda">
+              <PropertyRef Name="id_ponude" />
+            </Principal>
+            <Dependent Role="dbArtikl">
+              <PropertyRef Name="ponuda_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_narudzbe_Artikl">
+          <End Type="EAT32DBModel.dbArtikl" Role="dbArtikl" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbStavkaNarudzbe" Role="dbStavkaNarudzbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbArtikl">
+              <PropertyRef Name="id_artikla" />
+            </Principal>
+            <Dependent Role="dbStavkaNarudzbe">
+              <PropertyRef Name="artikl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbObicniKorisnik_dbKorisnickiRacun">
+          <End Type="EAT32DBModel.dbKorisnickiRacun" Role="dbKorisnickiRacun" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbObicniKorisnik" Role="dbObicniKorisnik" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbUgostiteljskiObjekt_dbKorisnickiRacun">
+          <End Type="EAT32DBModel.dbKorisnickiRacun" Role="dbKorisnickiRacun" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbUgostiteljskiObjekt" Role="dbUgostiteljskiObjekt" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poruka_Korisnik">
+          <End Type="EAT32DBModel.dbKorisnickiRacun" Role="dbKorisnickiRacun" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbPoruka" Role="dbPoruka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbPoruka">
+              <PropertyRef Name="posiljatelj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poruka_Korisnik1">
+          <End Type="EAT32DBModel.dbKorisnickiRacun" Role="dbKorisnickiRacun" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbPoruka" Role="dbPoruka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbKorisnickiRacun">
+              <PropertyRef Name="id_korisnika" />
+            </Principal>
+            <Dependent Role="dbPoruka">
+              <PropertyRef Name="primatelj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbNarudžba_dbObicniKorisnik">
+          <End Type="EAT32DBModel.dbObicniKorisnik" Role="dbObicniKorisnik" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbNarudžba" Role="dbNarudžba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Principal>
+            <Dependent Role="dbNarudžba">
+              <PropertyRef Name="korisnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbNarudžba_dbUgostiteljskiObjekt">
+          <End Type="EAT32DBModel.dbUgostiteljskiObjekt" Role="dbUgostiteljskiObjekt" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbNarudžba" Role="dbNarudžba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbNarudžba">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbRezervacija_dbObicniKorisnik">
+          <End Type="EAT32DBModel.dbObicniKorisnik" Role="dbObicniKorisnik" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbRezervacija" Role="dbRezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Principal>
+            <Dependent Role="dbRezervacija">
+              <PropertyRef Name="korisnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbRezervacija_dbUgostiteljskiObjekt">
+          <End Type="EAT32DBModel.dbUgostiteljskiObjekt" Role="dbUgostiteljskiObjekt" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbRezervacija" Role="dbRezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbRezervacija">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbRecenzija_dbNarudžba1">
+          <End Type="EAT32DBModel.dbNarudžba" Role="dbNarudžba" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbRecenzija" Role="dbRecenzija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbNarudžba">
+              <PropertyRef Name="id_narudzbe" />
+            </Principal>
+            <Dependent Role="dbRecenzija">
+              <PropertyRef Name="narudzba_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbStavkaNarudzbe_dbNarudžba">
+          <End Type="EAT32DBModel.dbNarudžba" Role="dbNarudžba" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbStavkaNarudzbe" Role="dbStavkaNarudzbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbNarudžba">
+              <PropertyRef Name="id_narudzbe" />
+            </Principal>
+            <Dependent Role="dbStavkaNarudzbe">
+              <PropertyRef Name="narudzba_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbPonuda_dbUgostiteljskiObjekt">
+          <End Type="EAT32DBModel.dbUgostiteljskiObjekt" Role="dbUgostiteljskiObjekt" Multiplicity="1" />
+          <End Type="EAT32DBModel.dbPonuda" Role="dbPonuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbPonuda">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dbPretplata">
+          <Key>
+            <PropertyRef Name="id_pretplate" />
+          </Key>
+          <Property Name="id_pretplate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnik_id" Type="Int32" />
+          <Property Name="ugostiteljski_obrt_id" Type="Int32" />
+          <NavigationProperty Name="dbObicniKorisnik" Relationship="EAT32DBModel.FK_dbPretplata_dbObicniKorisnik" FromRole="dbPretplata" ToRole="dbObicniKorisnik" />
+          <NavigationProperty Name="dbUgostiteljskiObjekt" Relationship="EAT32DBModel.FK_dbPretplata_dbUgostiteljskiObjekt" FromRole="dbPretplata" ToRole="dbUgostiteljskiObjekt" />
+        </EntityType>
+        <Association Name="FK_dbPretplata_dbObicniKorisnik">
+          <End Type="EAT32DBModel.dbObicniKorisnik" Role="dbObicniKorisnik" Multiplicity="0..1" />
+          <End Type="EAT32DBModel.dbPretplata" Role="dbPretplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbObicniKorisnik">
+              <PropertyRef Name="id_obicnog_korisnika" />
+            </Principal>
+            <Dependent Role="dbPretplata">
+              <PropertyRef Name="korisnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbPretplata_dbUgostiteljskiObjekt">
+          <End Type="EAT32DBModel.dbUgostiteljskiObjekt" Role="dbUgostiteljskiObjekt" Multiplicity="0..1" />
+          <End Type="EAT32DBModel.dbPretplata" Role="dbPretplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbUgostiteljskiObjekt">
+              <PropertyRef Name="id_ugostiteljskog_obrta" />
+            </Principal>
+            <Dependent Role="dbPretplata">
+              <PropertyRef Name="ugostiteljski_obrt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EAT32DBModelStoreContainer" CdmEntityContainer="eat32Entities">
+          <EntitySetMapping Name="dbArtikl">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbArtikl">
+              <MappingFragment StoreEntitySet="dbArtikl">
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="ponuda_id" ColumnName="ponuda_id" />
+                <ScalarProperty Name="id_artikla" ColumnName="id_artikla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbKorisnickiRacun">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbKorisnickiRacun">
+              <MappingFragment StoreEntitySet="dbKorisnickiRacun">
+                <ScalarProperty Name="broj_telefona" ColumnName="broj_telefona" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="korisnicko_ime" ColumnName="korisnicko_ime" />
+                <ScalarProperty Name="id_korisnika" ColumnName="id_korisnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbNarudžba">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbNarudžba">
+              <MappingFragment StoreEntitySet="dbNarudžba">
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="korisnik_id" ColumnName="korisnik_id" />
+                <ScalarProperty Name="ugostiteljski_obrt_id" ColumnName="ugostiteljski_obrt_id" />
+                <ScalarProperty Name="id_narudzbe" ColumnName="id_narudzbe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbObicniKorisnik">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbObicniKorisnik">
+              <MappingFragment StoreEntitySet="dbObicniKorisnik">
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="id_obicnog_korisnika" ColumnName="id_obicnog_korisnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbPonuda">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbPonuda">
+              <MappingFragment StoreEntitySet="dbPonuda">
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="ugostiteljski_obrt_id" ColumnName="ugostiteljski_obrt_id" />
+                <ScalarProperty Name="id_ponude" ColumnName="id_ponude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbPoruka">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbPoruka">
+              <MappingFragment StoreEntitySet="dbPoruka">
+                <ScalarProperty Name="tekst" ColumnName="tekst" />
+                <ScalarProperty Name="naslov" ColumnName="naslov" />
+                <ScalarProperty Name="primatelj_id" ColumnName="primatelj_id" />
+                <ScalarProperty Name="posiljatelj_id" ColumnName="posiljatelj_id" />
+                <ScalarProperty Name="id_poruke" ColumnName="id_poruke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbRezervacija">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbRezervacija">
+              <MappingFragment StoreEntitySet="dbRezervacija">
+                <ScalarProperty Name="broj_stolova" ColumnName="broj_stolova" />
+                <ScalarProperty Name="korisnik_id" ColumnName="korisnik_id" />
+                <ScalarProperty Name="ugostiteljski_obrt_id" ColumnName="ugostiteljski_obrt_id" />
+                <ScalarProperty Name="id_rezervacije" ColumnName="id_rezervacije" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbUgostiteljskiObjekt">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbUgostiteljskiObjekt">
+              <MappingFragment StoreEntitySet="dbUgostiteljskiObjekt">
+                <ScalarProperty Name="radno_vrijeme_kraj" ColumnName="radno_vrijeme_kraj" />
+                <ScalarProperty Name="radno_vrijeme_pocetak" ColumnName="radno_vrijeme_pocetak" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="id_ugostiteljskog_obrta" ColumnName="id_ugostiteljskog_obrta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EAT32DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbRecenzija">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbRecenzija">
+              <MappingFragment StoreEntitySet="dbRecenzija">
+                <ScalarProperty Name="id_recenzije" ColumnName="id_recenzije" />
+                <ScalarProperty Name="ocjena" ColumnName="ocjena" />
+                <ScalarProperty Name="komentar" ColumnName="komentar" />
+                <ScalarProperty Name="narudzba_id" ColumnName="narudzba_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbStavkaNarudzbe">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbStavkaNarudzbe">
+              <MappingFragment StoreEntitySet="dbStavkaNarudzbe">
+                <ScalarProperty Name="id_stavke_narudzbe" ColumnName="id_stavke_narudzbe" />
+                <ScalarProperty Name="popust" ColumnName="popust" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="narudzba_id" ColumnName="narudzba_id" />
+                <ScalarProperty Name="artikl_id" ColumnName="artikl_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbPretplata">
+            <EntityTypeMapping TypeName="EAT32DBModel.dbPretplata">
+              <MappingFragment StoreEntitySet="dbPretplata">
+                <ScalarProperty Name="ugostiteljski_obrt_id" ColumnName="ugostiteljski_obrt_id" />
+                <ScalarProperty Name="korisnik_id" ColumnName="korisnik_id" />
+                <ScalarProperty Name="id_pretplate" ColumnName="id_pretplate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fdfe24cac66c443cb94550345844644e" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="EAT32DBModel.dbArtikl" Width="1.5" PointX="7.5" PointY="7" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbKorisnickiRacun" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbNarudžba" Width="1.5" PointX="8.25" PointY="3.375" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbObicniKorisnik" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbPonuda" Width="1.5" PointX="5.25" PointY="7.125" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbPoruka" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbRezervacija" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbUgostiteljskiObjekt" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="EAT32DBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="10.625" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbRecenzija" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbStavkaNarudzbe" Width="1.5" PointX="10.5" PointY="5.25" />
+        <AssociationConnector Association="EAT32DBModel.FK_Artikl_Ponuda" />
+        <AssociationConnector Association="EAT32DBModel.FK_Stavka_narudzbe_Artikl" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbObicniKorisnik_dbKorisnickiRacun" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbUgostiteljskiObjekt_dbKorisnickiRacun" />
+        <AssociationConnector Association="EAT32DBModel.FK_Poruka_Korisnik" />
+        <AssociationConnector Association="EAT32DBModel.FK_Poruka_Korisnik1" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbNarudžba_dbObicniKorisnik" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbNarudžba_dbUgostiteljskiObjekt" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbRezervacija_dbObicniKorisnik" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbRezervacija_dbUgostiteljskiObjekt" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbRecenzija_dbNarudžba1" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbStavkaNarudzbe_dbNarudžba" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbPonuda_dbUgostiteljskiObjekt" />
+        <EntityTypeShape EntityType="EAT32DBModel.dbPretplata" Width="1.5" PointX="8.25" PointY="10.75" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbPretplata_dbObicniKorisnik" />
+        <AssociationConnector Association="EAT32DBModel.FK_dbPretplata_dbUgostiteljskiObjekt" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
