@@ -1,7 +1,9 @@
-U sklopu izrade kostura aplikacije EAT32 implementirane su sljedeæe funkcionalnosti:
+Aplikacija izraÄ‘ena u suradnji sa kolegom u sklopu kolegija Programsko injÅ¾injerstvo.
 
--Registracija korisnika (samo "obièni" korisnik)
+U sklopu izrade kostura aplikacije EAT32 implementirane su sljedeÄ‡e funkcionalnosti:
+
+-Registracija korisnika (samo "obiÄni" korisnik)
 -Prijava korisnika
--Glavna forma "obiènog" korisnika (prikazuje popis svih postojeæih ugostiteljskih objekata)
--Glavna forma administratora :  -pristupa se prijavom koristeæi podatke: korisnièko ime:root, lozinka:toor
-				-omoguæuje dodavanje ugostiteljskih objekata, te ispis svih postojeæih
+-Glavna forma "obiÄnog" korisnika (prikazuje popis svih postojeÄ‡ih ugostiteljskih objekata)
+-Glavna forma administratora :  -pristupa se prijavom koristeÄ‡i podatke: korisniÄko ime:root, lozinka:toor
+				-omoguÄ‡uje dodavanje ugostiteljskih objekata, te ispis svih postojeÄ‡ih
